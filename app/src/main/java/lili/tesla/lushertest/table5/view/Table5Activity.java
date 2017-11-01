@@ -16,10 +16,10 @@ public class Table5Activity extends BaseActivity implements Table5View {
 
     private Table5Presenter mPresenter;
 
-    @BindView(R.id.image0_table5) ImageView mImage0;
-    @BindView(R.id.image1_table5) ImageView mImage1;
-    @BindView(R.id.image2_table5) ImageView mImage2;
-    @BindView(R.id.image3_table5) ImageView mImage3;
+    @BindView(R.id.image0_table5) ImageView mImage0Tab5;
+    @BindView(R.id.image1_table5) ImageView mImage1Tab5;
+    @BindView(R.id.image2_table5) ImageView mImage2Tab5;
+    @BindView(R.id.image3_table5) ImageView mImage3Tab5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +40,9 @@ public class Table5Activity extends BaseActivity implements Table5View {
 
     @Override
     public void setImagesColors() {
-        mImage0.setBackgroundResource(R.color.brownGreen);
-        mImage1.setBackgroundResource(R.color.teal);
-        mImage2.setBackgroundResource(R.color.green);
-        mImage3.setBackgroundResource(R.color.yellowGreen);
+        mImage0Tab5.setBackgroundResource(R.color.brownGreen);
+        mImage1Tab5.setBackgroundResource(R.color.teal);
+        mImage2Tab5.setBackgroundResource(R.color.green);
+        mImage3Tab5.setBackgroundResource(R.color.yellowGreen);
     }
 }

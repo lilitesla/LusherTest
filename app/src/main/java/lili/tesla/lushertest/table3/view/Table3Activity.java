@@ -15,15 +15,15 @@ public class Table3Activity extends BaseActivity implements Table3View {
 
     private Table3Presenter mPresenter;
 
-    @BindView(R.id.image0_table3) ImageView mImage0;
-    @BindView(R.id.image1_table3) ImageView mImage1;
-    @BindView(R.id.image2_table3) ImageView mImage2;
-    @BindView(R.id.image3_table3) ImageView mImage3;
+    @BindView(R.id.image0_table3) ImageView mImage0Tab3;
+    @BindView(R.id.image1_table3) ImageView mImage1Tab3;
+    @BindView(R.id.image2_table3) ImageView mImage2Tab3;
+    @BindView(R.id.image3_table3) ImageView mImage3Tab3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_table2);
+        setContentView(R.layout.activity_table3);
 
         ButterKnife.bind(this);
         mPresenter = new Table3Presenter();
@@ -40,10 +40,10 @@ public class Table3Activity extends BaseActivity implements Table3View {
 
     @Override
     public void setImagesColors() {
-        mImage0.setBackgroundResource(R.color.darkBlue);
-        mImage1.setBackgroundResource(R.color.teal);
-        mImage2.setBackgroundResource(R.color.redYellow);
-        mImage3.setBackgroundResource(R.color.yellowRed);
+        mImage0Tab3.setBackgroundResource(R.color.darkBlue);
+        mImage1Tab3.setBackgroundResource(R.color.teal);
+        mImage2Tab3.setBackgroundResource(R.color.redYellow);
+        mImage3Tab3.setBackgroundResource(R.color.yellowRed);
 
     }
 }

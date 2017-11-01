@@ -16,10 +16,10 @@ public class Table7Activity extends BaseActivity implements Table7View {
 
     private Table7Presenter mPresenter;
 
-    @BindView(R.id.image0_table7) ImageView mImage0;
-    @BindView(R.id.image1_table7) ImageView mImage1;
-    @BindView(R.id.image2_table7) ImageView mImage2;
-    @BindView(R.id.image3_table7) ImageView mImage3;
+    @BindView(R.id.image0_table7) ImageView mImage0Tab7;
+    @BindView(R.id.image1_table7) ImageView mImage1Tab7;
+    @BindView(R.id.image2_table7) ImageView mImage2Tab7;
+    @BindView(R.id.image3_table7) ImageView mImage3Tab7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,9 @@ public class Table7Activity extends BaseActivity implements Table7View {
 
     @Override
     public void setImagesColors() {
-        mImage0.setBackgroundResource(R.color.lightBrown);
-        mImage1.setBackgroundResource(R.color.greenYellow);
-        mImage2.setBackgroundResource(R.color.redOrange);
-        mImage3.setBackgroundResource(R.color.yellowRed);
+        mImage0Tab7.setBackgroundResource(R.color.lightBrown);
+        mImage1Tab7.setBackgroundResource(R.color.greenYellow);
+        mImage2Tab7.setBackgroundResource(R.color.redOrange);
+        mImage3Tab7.setBackgroundResource(R.color.yellowRed);
     }
 }

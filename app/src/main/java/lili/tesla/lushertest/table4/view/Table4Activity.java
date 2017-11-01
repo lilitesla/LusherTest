@@ -16,10 +16,10 @@ public class Table4Activity extends BaseActivity implements Table4View {
 
     private Table4Presenter mPresenter;
 
-    @BindView(R.id.image0_table4) ImageView mImage0;
-    @BindView(R.id.image1_table4) ImageView mImage1;
-    @BindView(R.id.image2_table4) ImageView mImage2;
-    @BindView(R.id.image3_table4) ImageView mImage3;
+    @BindView(R.id.image0_table4) ImageView mImage0Tab4;
+    @BindView(R.id.image1_table4) ImageView mImage1Tab4;
+    @BindView(R.id.image2_table4) ImageView mImage2Tab4;
+    @BindView(R.id.image3_table4) ImageView mImage3Tab4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,9 @@ public class Table4Activity extends BaseActivity implements Table4View {
 
     @Override
     public void setImagesColors() {
-        mImage0.setBackgroundResource(R.color.darkBlue);
-        mImage1.setBackgroundResource(R.color.teal);
-        mImage2.setBackgroundResource(R.color.purple);
-        mImage3.setBackgroundResource(R.color.cyan);
+        mImage0Tab4.setBackgroundResource(R.color.darkBlue);
+        mImage1Tab4.setBackgroundResource(R.color.teal);
+        mImage2Tab4.setBackgroundResource(R.color.purple);
+        mImage3Tab4.setBackgroundResource(R.color.cyan);
     }
 }

@@ -16,14 +16,14 @@ public class Table2Activity extends BaseActivity implements Table2View {
 
     private Table2Presenter mPresenter;
 
-    @BindView(R.id.image0_table2) ImageView mImage0;
-    @BindView(R.id.image1_table2) ImageView mImage1;
-    @BindView(R.id.image2_table2) ImageView mImage2;
-    @BindView(R.id.image3_table2) ImageView mImage3;
-    @BindView(R.id.image4_table2) ImageView mImage4;
-    @BindView(R.id.image5_table2) ImageView mImage5;
-    @BindView(R.id.image6_table2) ImageView mImage6;
-    @BindView(R.id.image7_table2) ImageView mImage7;
+    @BindView(R.id.image0_table2) ImageView mImage0Tab2;
+    @BindView(R.id.image1_table2) ImageView mImage1Tab2;
+    @BindView(R.id.image2_table2) ImageView mImage2Tab2;
+    @BindView(R.id.image3_table2) ImageView mImage3Tab2;
+    @BindView(R.id.image4_table2) ImageView mImage4Tab2;
+    @BindView(R.id.image5_table2) ImageView mImage5Tab2;
+    @BindView(R.id.image6_table2) ImageView mImage6Tab2;
+    @BindView(R.id.image7_table2) ImageView mImage7Tab2;
 
 
     @Override
@@ -46,13 +46,13 @@ public class Table2Activity extends BaseActivity implements Table2View {
 
     @Override
     public void setImagesColors() {
-        mImage0.setBackgroundResource(R.color.gray);
-        mImage1.setBackgroundResource(R.color.darkBlue);
-        mImage2.setBackgroundResource(R.color.teal);
-        mImage3.setBackgroundResource(R.color.redYellow);
-        mImage4.setBackgroundResource(R.color.yellowRed);
-        mImage5.setBackgroundResource(R.color.purple);
-        mImage6.setBackgroundResource(R.color.brown);
-        mImage7.setBackgroundResource(R.color.black);
+        mImage0Tab2.setBackgroundResource(R.color.gray);
+        mImage1Tab2.setBackgroundResource(R.color.darkBlue);
+        mImage2Tab2.setBackgroundResource(R.color.teal);
+        mImage3Tab2.setBackgroundResource(R.color.redYellow);
+        mImage4Tab2.setBackgroundResource(R.color.yellowRed);
+        mImage5Tab2.setBackgroundResource(R.color.purple);
+        mImage6Tab2.setBackgroundResource(R.color.brown);
+        mImage7Tab2.setBackgroundResource(R.color.black);
     }
 }

@@ -17,11 +17,11 @@ public class Table1Activity extends BaseActivity implements Table1View {
 
     private Table1Presenter mPresenter;
 
-    @BindView(R.id.image0_table1) ImageView mImage0;
-    @BindView(R.id.image1_table1) ImageView mImage1;
-    @BindView(R.id.image2_table1) ImageView mImage2;
-    @BindView(R.id.image3_table1) ImageView mImage3;
-    @BindView(R.id.image4_table1) ImageView mImage4;
+    @BindView(R.id.image0_table1) ImageView mImage0Tab1;
+    @BindView(R.id.image1_table1) ImageView mImage1Tab1;
+    @BindView(R.id.image2_table1) ImageView mImage2Tab1;
+    @BindView(R.id.image3_table1) ImageView mImage3Tab1;
+    @BindView(R.id.image4_table1) ImageView mImage4Tab1;
 
 
     @Override
@@ -44,10 +44,10 @@ public class Table1Activity extends BaseActivity implements Table1View {
 
     @Override
     public void setImagesColors() {
-        mImage0.setBackgroundResource(R.color.gray);
-        mImage1.setBackgroundResource(R.color.darkGray);
-        mImage2.setBackgroundResource(R.color.black);
-        mImage3.setBackgroundResource(R.color.lightGray);
-        mImage4.setBackgroundResource(R.drawable.borders);
+        mImage0Tab1.setBackgroundResource(R.color.gray);
+        mImage1Tab1.setBackgroundResource(R.color.darkGray);
+        mImage2Tab1.setBackgroundResource(R.color.black);
+        mImage3Tab1.setBackgroundResource(R.color.lightGray);
+        mImage4Tab1.setBackgroundResource(R.drawable.borders);
     }
 }
