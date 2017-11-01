@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="lili.tesla.lushertest">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".description.view.DescriptionActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".table2.view.Table2Activity" />
+        <activity android:name=".table1.view.Table1Activity" />
+        <activity android:name=".table3.view.Table3Activity" />
+        <activity android:name=".table4.view.Table4Activity" />
+        <activity android:name=".table5.view.Table5Activity" />
+        <activity android:name=".table6.view.Table6Activity" />
+        <activity android:name=".table7.view.Table7Activity"></activity>
+    </application>
+
+</manifest>
