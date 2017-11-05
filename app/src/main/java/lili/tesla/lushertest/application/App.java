@@ -18,6 +18,7 @@ public class App extends Application {
     public static int[] arrayTab2_2;
     public static int[][] arrayTab3;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -26,9 +27,9 @@ public class App extends Application {
             stethoInit();
         }
 
-        arrayTab1 = new int[3];
-        arrayTab2_1 = new int[6];
-        arrayTab2_2 = new int[6];
+        arrayTab1 = new int[5];
+        arrayTab2_1 = new int[8];
+        arrayTab2_2 = new int[8];
         arrayTab3 = new int[6][4];
     }
 

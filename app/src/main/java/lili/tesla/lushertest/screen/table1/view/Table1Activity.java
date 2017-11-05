@@ -18,6 +18,7 @@ import lili.tesla.lushertest.screen.table2.view.Table2Activity;
 public class Table1Activity extends BaseActivity implements Table1View, View.OnClickListener {
 
     private static final String KEY_CLICK_COUNT_TAB1 = "CLICK_COUNT_TAB1";
+    private static final String KEY_SUM_NUM_TAB1 = "SUM_NUM_TAB1";
 
     public static void start(Context context ) {
         Intent intent = new Intent(context, Table1Activity.class);
@@ -28,6 +29,7 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
 
     private Table1Presenter mPresenter;
     private int clickCount;
+    private int sumNum;
 
     @BindView(R.id.image0_table1) ImageView mImage0Tab1;
     @BindView(R.id.image1_table1) ImageView mImage1Tab1;
@@ -54,9 +56,11 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
         mImage4Tab1.setOnClickListener(this);
 
         clickCount = 0;
+        sumNum = 10;
 
         if (savedInstanceState != null) {
             clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB1, 0);
+            sumNum = savedInstanceState.getInt(KEY_SUM_NUM_TAB1, 10);
         }
     }
 
@@ -106,12 +110,27 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
     }
 
     private void onClickAction( int num) {
-        App.arrayTab1[clickCount] = num;
+        if (clickCount == 0) {
+            App.arrayTab1[0] = num;
+            sumNum -= num;
+        }
 
         if (clickCount == 1) {
+            App.arrayTab1[1] = num;
+            sumNum -= num;
             mTextTab1.setText(R.string.text_worst);
         }
+
         if (clickCount == 2) {
+            App.arrayTab1[4] = num;
+            sumNum -= num;
+        }
+
+        if (clickCount == 3) {
+            App.arrayTab1[3] = num;
+            sumNum -= num;
+            App.arrayTab1[2] = sumNum;
+
             mPresenter.showTable2Screen();
         }
 
@@ -121,6 +140,7 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY_CLICK_COUNT_TAB1, clickCount);
+        outState.putInt(KEY_SUM_NUM_TAB1, clickCount);
+        outState.putInt(KEY_SUM_NUM_TAB1, clickCount);
     }
 }

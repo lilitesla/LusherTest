@@ -20,6 +20,8 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
 
     public static final String EXTRA_KEY_QUERY_NUM = "KEY_QUERY_NUM";
     public static final String KEY_CLICK_COUNT_TAB2 = "CLICK_COUNT_TAB2";
+    public static final String KEY_SUM_NUM_TAB2 = "SUM_NUM_TAB2";
+
 
     public static void start(Context context, int queryNum) {
         Intent intent = new Intent(context, Table2Activity.class);
@@ -32,6 +34,7 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
     private Table2Presenter mPresenter;
     private int mQueryNum;
     private int clickCount;
+    private int sumNum;
 
     @BindView(R.id.image0_table2) ImageView mImage0Tab2;
     @BindView(R.id.image1_table2) ImageView mImage1Tab2;
@@ -67,9 +70,11 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
         mImage7Tab2.setOnClickListener(this);
 
         clickCount = 0;
+        sumNum = 28;
 
         if (savedInstanceState != null) {
             clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB2, 0);
+            sumNum = savedInstanceState.getInt(KEY_SUM_NUM_TAB2, 28);
         }
     }
 
@@ -142,21 +147,43 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
     }
 
     private void onClickAction( int num) {
-        if (mQueryNum == 0) {
-            App.arrayTab2_1[clickCount] = num;
+
+        if (num < 5) {
+            if (mQueryNum == 0) {
+                App.arrayTab2_1[clickCount] = num;
+                sumNum -= num;
+            } else {
+                App.arrayTab2_2[clickCount] = num;
+                sumNum -= num;
+            }
         } else {
-            App.arrayTab2_2[clickCount] = num;
+            if (clickCount == 5) {
+                if (mQueryNum == 0) {
+                    App.arrayTab2_1[7] = num;
+                    sumNum -= num;
+                } else {
+                    App.arrayTab2_2[7] = num;
+                    sumNum -= num;
+                }
+            }
+
+            if (clickCount == 6) {
+                if (mQueryNum == 0) {
+                    App.arrayTab2_1[6] = num;
+                    sumNum -= num;
+                    App.arrayTab2_1[5] = sumNum;
+                    mPresenter.showTable3Screen();
+                } else {
+                    App.arrayTab2_2[6] = num;
+                    sumNum -= num;
+                    App.arrayTab2_2[5] = sumNum;
+                    mPresenter.showResultScreen();
+                }
+            }
         }
 
         if (clickCount == 4) {
             mTextTab2.setText(R.string.text_worst);
-        }
-        if (clickCount == 5) {
-            if (mQueryNum == 0) {
-                mPresenter.showTable3Screen();
-            } else {
-                mPresenter.showResultScreen();
-            }
         }
 
         clickCount ++;
@@ -166,5 +193,6 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_CLICK_COUNT_TAB2, clickCount);
+        outState.putInt(KEY_SUM_NUM_TAB2, sumNum);
     }
 }
