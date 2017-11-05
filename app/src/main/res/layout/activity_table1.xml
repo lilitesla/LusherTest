@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context="lili.tesla.lushertest.table1.view.Table1Activity">
+    tools:context=".screen.table1.view.Table1Activity">
 
     <TextView
         android:id="@+id/textViewTable1_description"

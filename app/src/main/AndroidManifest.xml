@@ -3,23 +3,24 @@
     package="lili.tesla.lushertest">
 
     <application
+        android:name=".application.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".description.view.DescriptionActivity">
+        <activity android:name=".screen.description.view.DescriptionActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".table1.view.Table1Activity" />
-        <activity android:name=".table2.view.Table2Activity" />
-        <activity android:name=".table3.view.Table3Activity" />
-        <activity android:name=".results.view.ResultActivity"></activity>
+        <activity android:name=".screen.table1.view.Table1Activity" />
+        <activity android:name=".screen.table2.view.Table2Activity" />
+        <activity android:name=".screen.table3.view.Table3Activity" />
+        <activity android:name=".screen.results.view.ResultActivity"></activity>
     </application>
 
 </manifest>
