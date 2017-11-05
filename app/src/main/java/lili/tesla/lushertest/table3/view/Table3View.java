@@ -6,16 +6,10 @@ package lili.tesla.lushertest.table3.view;
 
 public interface Table3View {
 
-    void setImagesColorsTable3();
-
-    void setImagesColorsTable4();
-
-    void setImagesColorsTable5();
-
-    void setImagesColorsTable6();
-
-    void setImagesColorsTable7();
-
     void showTable2Screen();
+
+    void setImagesColors(int testNum);
+
+    void setImagesVisible(int testNum);
 
 }

@@ -9,26 +9,12 @@ import lili.tesla.lushertest.base.BasePresenter;
 
 public class Table3Presenter extends BasePresenter<Table3View> {
 
-    public void setImagesColorsTable3() {
-        mView.setImagesColorsTable3();
-    }
-
-    public void setImagesColorsTable4() {
-        mView.setImagesColorsTable4();
-    }
-
-    public void setImagesColorsTable5() {
-        mView.setImagesColorsTable5();
-    }
-
-    public void setImagesColorsTable6() {
-        mView.setImagesColorsTable6();
-    }
-
-    public void setImagesColorsTable7() {
-        mView.setImagesColorsTable7();
-    }
-
     public void showTable2Activity() { mView.showTable2Screen(); }
+
+    public void setImagesColors(int testNum) {
+        mView.setImagesColors(testNum);
+    }
+
+    public void setImagesVisible(int testNum) { mView.setImagesVisible(testNum);}
 
 }

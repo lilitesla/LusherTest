@@ -19,7 +19,7 @@ import lili.tesla.lushertest.table2.view.Table2Activity;
 
 public class Table1Activity extends BaseActivity implements Table1View, View.OnClickListener {
 
-    public static void start(Context context) {
+    public static void start(Context context ) {
         Intent intent = new Intent(context, Table1Activity.class);
         Bundle bundle = new Bundle();
         intent.putExtras(bundle);
@@ -36,14 +36,12 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
     @BindView(R.id.image3_table1) ImageView mImage3Tab1;
     @BindView(R.id.image4_table1) ImageView mImage4Tab1;
 
-    @BindView(R.id.textView_description) TextView mTextTab1;
-
+    @BindView(R.id.textViewTable1_description) TextView mTextTab1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_table1);
-
 
         ButterKnife.bind(this);
         mPresenter = new Table1Presenter();
@@ -57,6 +55,7 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
         mImage4Tab1.setOnClickListener(this);
 
         clickCount = 0;
+        arrayTab1 = new int[3];
     }
 
     @Override
@@ -70,7 +69,7 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
 
     @Override
     public void showTable2Screen() {
-        Table2Activity.start(this);
+        Table2Activity.start(this, 0);
     }
 
     @Override
@@ -78,47 +77,43 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
         switch (v.getId()) {
             case R.id.image0_table1: {
                 mImage0Tab1.setVisibility(View.INVISIBLE);
-                arrayTab1[clickCount] = 0;
-
-                if (clickCount == 1) {
-                    mTextTab1.setText(R.string.text_worst);
-                }
-                if (clickCount == 2) {
-                    // TODO: 05.11.2017 сохранение и переход на следующий экран
-                }
-
-                clickCount ++;
+                onClickAction(0);
                 break;
             }
             case R.id.image1_table1: {
                 mImage1Tab1.setVisibility(View.INVISIBLE);
-                arrayTab1[clickCount] = 1;
-
-                clickCount ++;
+                onClickAction(1);
                 break;
             }
             case R.id.image2_table1: {
                 mImage2Tab1.setVisibility(View.INVISIBLE);
-                arrayTab1[clickCount] = 2;
-
-                clickCount ++;
+                onClickAction(2);
                 break;
             }
             case R.id.image3_table1: {
                 mImage3Tab1.setVisibility(View.INVISIBLE);
-                arrayTab1[clickCount] = 3;
-
-                clickCount ++;
+                onClickAction(3);
                 break;
             }
             case R.id.image4_table1: {
                 mImage4Tab1.setVisibility(View.INVISIBLE);
-                arrayTab1[clickCount] = 4;
-
-                clickCount ++;
+                onClickAction(4);
                 break;
             }
         }
+    }
 
+    private void onClickAction( int num) {
+        arrayTab1[clickCount] = num;
+
+        if (clickCount == 1) {
+            mTextTab1.setText(R.string.text_worst);
+        }
+        if (clickCount == 2) {
+            // TODO: 05.11.2017 сохранение
+            mPresenter.showTable2Screen();
+        }
+
+        clickCount ++;
     }
 }
