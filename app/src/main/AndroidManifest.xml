@@ -19,10 +19,6 @@
         <activity android:name=".table1.view.Table1Activity" />
         <activity android:name=".table2.view.Table2Activity" />
         <activity android:name=".table3.view.Table3Activity" />
-        <activity android:name=".table4.view.Table4Activity" />
-        <activity android:name=".table5.view.Table5Activity" />
-        <activity android:name=".table6.view.Table6Activity" />
-        <activity android:name=".table7.view.Table7Activity" />
     </application>
 
 </manifest>

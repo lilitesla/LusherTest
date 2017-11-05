@@ -8,12 +8,6 @@ import lili.tesla.lushertest.R;
 import lili.tesla.lushertest.base.BaseActivity;
 import lili.tesla.lushertest.description.presenter.DescriptionPresenter;
 import lili.tesla.lushertest.table1.view.Table1Activity;
-import lili.tesla.lushertest.table2.view.Table2Activity;
-import lili.tesla.lushertest.table3.view.Table3Activity;
-import lili.tesla.lushertest.table4.view.Table4Activity;
-import lili.tesla.lushertest.table5.view.Table5Activity;
-import lili.tesla.lushertest.table6.view.Table6Activity;
-import lili.tesla.lushertest.table7.view.Table7Activity;
 
 public class DescriptionActivity extends BaseActivity implements DescriptionView {
 

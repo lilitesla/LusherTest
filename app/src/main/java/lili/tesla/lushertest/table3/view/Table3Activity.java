@@ -28,7 +28,7 @@ public class Table3Activity extends BaseActivity implements Table3View {
         ButterKnife.bind(this);
         mPresenter = new Table3Presenter();
         mPresenter.setView(this);
-        mPresenter.setImagesColors();
+        mPresenter.setImagesColorsTable3();
     }
 
     public static void start(Context context) {
@@ -39,11 +39,44 @@ public class Table3Activity extends BaseActivity implements Table3View {
     }
 
     @Override
-    public void setImagesColors() {
+    public void setImagesColorsTable3() {
         mImage0Tab3.setBackgroundResource(R.color.darkBlue);
         mImage1Tab3.setBackgroundResource(R.color.teal);
         mImage2Tab3.setBackgroundResource(R.color.redYellow);
         mImage3Tab3.setBackgroundResource(R.color.yellowRed);
-
     }
+
+    @Override
+    public void setImagesColorsTable4() {
+        mImage0Tab3.setBackgroundResource(R.color.darkBlue);
+        mImage1Tab3.setBackgroundResource(R.color.teal);
+        mImage2Tab3.setBackgroundResource(R.color.purple);
+        mImage3Tab3.setBackgroundResource(R.color.cyan);
+    }
+
+    @Override
+    public void setImagesColorsTable5() {
+        mImage0Tab3.setBackgroundResource(R.color.brownGreen);
+        mImage1Tab3.setBackgroundResource(R.color.teal);
+        mImage2Tab3.setBackgroundResource(R.color.green);
+        mImage3Tab3.setBackgroundResource(R.color.yellowGreen);
+    }
+
+    @Override
+    public void setImagesColorsTable6() {
+        mImage0Tab3.setBackgroundResource(R.color.brown);
+        mImage1Tab3.setBackgroundResource(R.color.redBrown);
+        mImage2Tab3.setBackgroundResource(R.color.redYellow);
+        mImage3Tab3.setBackgroundResource(R.color.orange);
+    }
+
+    @Override
+    public void setImagesColorsTable7() {
+        mImage0Tab3.setBackgroundResource(R.color.lightBrown);
+        mImage1Tab3.setBackgroundResource(R.color.greenYellow);
+        mImage2Tab3.setBackgroundResource(R.color.redOrange);
+        mImage3Tab3.setBackgroundResource(R.color.yellowRed);
+    }
+
+
 }
