@@ -13,4 +13,8 @@ public class Table2Presenter extends BasePresenter<Table2View> {
         mView.setImagesColors();
     }
 
+    public void showTable3Screen() { mView.showTable3Screen(); }
+
+    public void showResultScreen() { mView.showResultScreen(); }
+
 }

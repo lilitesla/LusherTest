@@ -8,10 +8,18 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import lili.tesla.lushertest.R;
+import lili.tesla.lushertest.table2.view.Table2Activity;
 import lili.tesla.lushertest.table3.presenter.Table3Presenter;
 import lili.tesla.lushertest.base.BaseActivity;
 
 public class Table3Activity extends BaseActivity implements Table3View {
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, Table3Activity.class);
+        Bundle bundle = new Bundle();
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     private Table3Presenter mPresenter;
 
@@ -29,13 +37,6 @@ public class Table3Activity extends BaseActivity implements Table3View {
         mPresenter = new Table3Presenter();
         mPresenter.setView(this);
         mPresenter.setImagesColorsTable3();
-    }
-
-    public static void start(Context context) {
-        Intent intent = new Intent(context, Table3Activity.class);
-        Bundle bundle = new Bundle();
-        intent.putExtras(bundle);
-        context.startActivity(intent);
     }
 
     @Override
@@ -76,6 +77,11 @@ public class Table3Activity extends BaseActivity implements Table3View {
         mImage1Tab3.setBackgroundResource(R.color.greenYellow);
         mImage2Tab3.setBackgroundResource(R.color.redOrange);
         mImage3Tab3.setBackgroundResource(R.color.yellowRed);
+    }
+
+    @Override
+    public void showTable2Screen() {
+        Table2Activity.start(this);
     }
 
 

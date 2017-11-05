@@ -8,4 +8,42 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="imageTable2">
+        <item name="android:layout_height">85dp</item>
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="linearLayoutTable2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="imageTable3">
+        <item name="android:layout_height">360dp</item>
+        <item name="android:layout_width">140dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="imageTable1">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">165dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="linearlayoutTable1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">180dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
 </resources>

@@ -7,5 +7,6 @@ package lili.tesla.lushertest.table1.view;
 public interface Table1View {
 
     void setImagesColors();
+    void showTable2Screen();
 
 }

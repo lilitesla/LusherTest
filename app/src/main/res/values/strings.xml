@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Тест Люшера</string>
+    <string name="text_best">Выбери цвет, который тебе <b>больше</b> всего нравится</string>
+    <string name="text_worst">Выбери цвет, который тебе <b>меньше</b> всего нравится</string>
+    <string name="text_better">Выбери цвет, который тебе нравится <b>больше</b></string>
+
 </resources>

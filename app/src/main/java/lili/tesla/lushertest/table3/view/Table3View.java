@@ -16,4 +16,6 @@ public interface Table3View {
 
     void setImagesColorsTable7();
 
+    void showTable2Screen();
+
 }

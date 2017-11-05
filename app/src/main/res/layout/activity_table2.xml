@@ -11,83 +11,64 @@
         android:id="@+id/textView_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Выберите бла бла бла"/>
+        android:text="@string/text_best"/>
 
     <LinearLayout
+        android:layout_centerInParent="true"
         android:id="@+id/linearLayout_grid"
-        android:layout_below="@id/textView_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            style="@style/linearLayoutTable2">
 
             <ImageView
                 android:id="@+id/image0_table2"
-                android:layout_width="70dp"
-                android:background="@color/colorAccent"
-                android:layout_height="70dp"/>
+                style="@style/imageTable2" />
 
             <ImageView
                 android:id="@+id/image1_table2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/colorAccent"/>
-
-            <ImageView
-                android:id="@+id/image2_table2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/colorAccent"/>
-
-            <ImageView
-                android:id="@+id/image3_table2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/colorAccent"/>
+                style="@style/imageTable2"/>
 
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="85dp"
-            android:orientation="horizontal"
-            android:gravity="center">
+            style="@style/linearLayoutTable2">
+
+            <ImageView
+                android:id="@+id/image2_table2"
+                style="@style/imageTable2"/>
+
+            <ImageView
+                android:id="@+id/image3_table2"
+                style="@style/imageTable2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearLayoutTable2">
 
             <ImageView
                 android:id="@+id/image4_table2"
-                android:layout_width="70dp"
-                android:background="@color/colorAccent"
-                android:layout_height="70dp"/>
+                style="@style/imageTable2"/>
 
             <ImageView
                 android:id="@+id/image5_table2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/colorAccent"/>
+                style="@style/imageTable2"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/linearLayoutTable2">
 
             <ImageView
                 android:id="@+id/image6_table2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/colorAccent"/>
+                style="@style/imageTable2"/>
 
             <ImageView
                 android:id="@+id/image7_table2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginLeft="15dp"
-                android:background="@color/colorAccent"/>
+                style="@style/imageTable2"/>
 
         </LinearLayout>
 

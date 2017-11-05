@@ -9,10 +9,19 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import lili.tesla.lushertest.R;
 import lili.tesla.lushertest.base.BaseActivity;
+import lili.tesla.lushertest.results.view.ResultActivity;
 import lili.tesla.lushertest.table1.presenter.Table1Presenter;
 import lili.tesla.lushertest.table2.presenter.Table2Presenter;
+import lili.tesla.lushertest.table3.view.Table3Activity;
 
 public class Table2Activity extends BaseActivity implements Table2View {
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, Table2Activity.class);
+        Bundle bundle = new Bundle();
+        intent.putExtras(bundle);
+        context.startActivity(intent);
+    }
 
     private Table2Presenter mPresenter;
 
@@ -37,13 +46,6 @@ public class Table2Activity extends BaseActivity implements Table2View {
         mPresenter.setImagesColors();
     }
 
-    public static void start(Context context) {
-        Intent intent = new Intent(context, Table2Activity.class);
-        Bundle bundle = new Bundle();
-        intent.putExtras(bundle);
-        context.startActivity(intent);
-    }
-
     @Override
     public void setImagesColors() {
         mImage0Tab2.setBackgroundResource(R.color.gray);
@@ -54,5 +56,15 @@ public class Table2Activity extends BaseActivity implements Table2View {
         mImage5Tab2.setBackgroundResource(R.color.purple);
         mImage6Tab2.setBackgroundResource(R.color.brown);
         mImage7Tab2.setBackgroundResource(R.color.black);
+    }
+
+    @Override
+    public void showTable3Screen() {
+        Table3Activity.start(this);
+    }
+
+    @Override
+    public void showResultScreen() {
+        ResultActivity.start(this);
     }
 }
