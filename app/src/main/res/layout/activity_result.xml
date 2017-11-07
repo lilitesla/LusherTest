@@ -4,11 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="16dp"
-    tools:context=".screen.results.view.ResultActivity">
+    tools:context=".presentation.screen.results.view.ResultActivity">
 
     <TextView
-        android:id="@+id/textview_results"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:id="@+id/textview_resultcaption"
+        android:text="Результаты"
+        android:textSize="20dp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/textview_resultcaption">
+
+        <TextView
+            android:id="@+id/textview_results"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="16dp"/>
+
+    </ScrollView>
+
+
 
 </RelativeLayout>
