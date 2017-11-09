@@ -32,6 +32,7 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
     private int testNum;
     private int clickCount;
     private boolean isSecondTry;
+    private boolean isWasSecondTry;
 
     @BindView(R.id.image0_table3) ImageView mImage0Tab3;
     @BindView(R.id.image1_table3) ImageView mImage1Tab3;
@@ -59,6 +60,7 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         }
 
         isSecondTry = false;
+        isWasSecondTry = false;
         testNum = -1;
         clickCount = 0;
 
@@ -96,35 +98,50 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         onClickAction();
     }
 
-    private void calcResultSums(){
-        for (int i = 0; i < 4; i ++) {
-            App.arrayTab3[5][i] = 0;
-            for (int j = 0; j < 5; j ++) {
-                App.arrayTab3[5][i] += App.arrayTab3[j][i];
-            }
-        }
-    }
-
     private void onClickAction(){
 
         clickCount ++;
 
-        if (clickCount <  6 ){
-            mPresenter.setImagesVisible( clickCount );
+        if (clickCount <  6 ) {
+            mPresenter.setImagesVisible(clickCount);
 
-        } else {
+       /* } else {
             if (isSecondTry || isRightTest()) {
                 isSecondTry = false;
                 if (testNum < 4) {
                     addTestNumber();
                 } else {
-                    calcResultSums();
                     mPresenter.showTable2Activity();
                 }
             } else {
                 testNum --;
                 isSecondTry = true;
                 addTestNumber();
+            }
+        }*/
+
+        } else {
+            if (!isSecondTry) {
+                if (testNum < 4) {
+                    addTestNumber();
+                } else {
+                    isSecondTry = true;
+                    testNum = 0;
+                }
+            }
+            if (isSecondTry) {
+                while ((testNum < 5)&&(isRightTest()||isWasSecondTry)) {
+                    isWasSecondTry = false;
+                    testNum ++;
+                }
+                if (testNum < 5) {
+                    testNum --;
+                    isWasSecondTry = true;
+                    addTestNumber();
+
+                } else {
+                    mPresenter.showTable2Activity();
+                }
             }
         }
 
@@ -198,31 +215,31 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         switch (testVisibleNum) {
             case 0: {
                 mImage0Tab3.setVisibility(View.VISIBLE);
-                mImage1Tab3.setVisibility(View.VISIBLE);
+                mImage3Tab3.setVisibility(View.VISIBLE);
                 break;
             }
             case 1: {
-                mImage0Tab3.setVisibility(View.VISIBLE);
+                mImage1Tab3.setVisibility(View.VISIBLE);
                 mImage2Tab3.setVisibility(View.VISIBLE);
                 break;
             }
             case 2: {
                 mImage0Tab3.setVisibility(View.VISIBLE);
-                mImage3Tab3.setVisibility(View.VISIBLE);
+                mImage1Tab3.setVisibility(View.VISIBLE);
                 break;
             }
             case 3: {
-                mImage1Tab3.setVisibility(View.VISIBLE);
+                mImage3Tab3.setVisibility(View.VISIBLE);
                 mImage2Tab3.setVisibility(View.VISIBLE);
                 break;
             }
             case 4: {
-                mImage1Tab3.setVisibility(View.VISIBLE);
-                mImage3Tab3.setVisibility(View.VISIBLE);
+                mImage0Tab3.setVisibility(View.VISIBLE);
+                mImage2Tab3.setVisibility(View.VISIBLE);
                 break;
             }
             case 5: {
-                mImage2Tab3.setVisibility(View.VISIBLE);
+                mImage1Tab3.setVisibility(View.VISIBLE);
                 mImage3Tab3.setVisibility(View.VISIBLE);
                 break;
             }
