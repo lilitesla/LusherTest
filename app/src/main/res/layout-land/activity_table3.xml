@@ -25,23 +25,19 @@
 
             <ImageView
                 android:id="@+id/image0_table3"
-                style="@style/imageTable3" />
+                style="@style/imageTable3land" />
 
             <ImageView
                 android:id="@+id/image1_table3"
-                style="@style/imageTable3" />
+                style="@style/imageTable3land" />
 
             <ImageView
                 android:id="@+id/image2_table3"
-                style="@style/imageTable3" />
+                style="@style/imageTable3land" />
 
             <ImageView
                 android:id="@+id/image3_table3"
-                style="@style/imageTable3" />
-
-
-
-
+                style="@style/imageTable3land" />
 
     </LinearLayout>
 

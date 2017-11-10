@@ -62,6 +62,9 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
             clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB1, 0);
             sumNum = savedInstanceState.getInt(KEY_SUM_NUM_TAB1, 10);
         }
+
+        setImagesVisible();
+
     }
 
     @Override
@@ -116,15 +119,44 @@ public class Table1Activity extends BaseActivity implements Table1View, View.OnC
         if (clickCount == 3) {
             App.arrayTab1[4] = sumNum;
             mPresenter.showTable2Screen();
+            finish();
         }
 
         clickCount ++;
     }
 
+    private void setImagesVisible() {
+
+        String str = "";
+
+        for (int i = 0; i < 5; i ++) {
+            if (App.arrayTab1[i] > -1) {
+                str += App.arrayTab1[i];
+            }
+        }
+
+        if (str.contains("0")) {
+            mImage0Tab1.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("1")) {
+            mImage1Tab1.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("2")) {
+            mImage2Tab1.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("3")) {
+            mImage3Tab1.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("4")) {
+            mImage4Tab1.setVisibility(View.INVISIBLE);
+        }
+
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY_SUM_NUM_TAB1, clickCount);
-        outState.putInt(KEY_SUM_NUM_TAB1, clickCount);
+        outState.putInt(KEY_CLICK_COUNT_TAB1, clickCount);
+        outState.putInt(KEY_SUM_NUM_TAB1, sumNum);
     }
 }

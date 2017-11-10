@@ -19,6 +19,8 @@ public class App extends Application {
     public static int[] arrayTab2_2;
     public static int[][] arrayTab3;
 
+    public static int fragmentPosition;
+
     public static DataBaseAccess dataBaseAccess;
 
 
@@ -34,6 +36,8 @@ public class App extends Application {
         arrayTab2_1 = new int[8];
         arrayTab2_2 = new int[8];
         arrayTab3 = new int[6][4];
+
+        fragmentPosition = 0;
 
         dataBaseAccess = new DataBaseAccess(this);
     }

@@ -36,7 +36,7 @@ public class Test2 {
         pNegativ.setDescription(App.dataBaseAccess.getNegative(pNegativ.getIndexId()) + "<br><br>");
         pPosNeg.setDescription(App.dataBaseAccess.getPositiveNegative(pPosNeg.getIndexId()) + "<br><br>");
 
-        sExlamation = "<b>Показатель тревожности: </b>" + colExlamation + " из 12<br><br>";
+        sExlamation = "<b><FONT COLOR=#00BCD4>Показатель тревожности: </font></b>" + colExlamation + " из 12<br><br>";
     }
 
     public String getResultText() {

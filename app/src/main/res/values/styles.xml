@@ -16,6 +16,14 @@
         <item name="android:background">@color/colorAccent</item>
     </style>
 
+    <style name="imageTable2land">
+        <item name="android:layout_height">100dp</item>
+        <item name="android:layout_width">120dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
     <style name="linearLayoutTable2">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">100dp</item>
@@ -23,9 +31,25 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="imageTable3land">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">180dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
     <style name="imageTable3">
-        <item name="android:layout_height">360dp</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">140dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:background">@color/colorAccent</item>
+    </style>
+
+    <style name="imageTable1land">
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">match_parent</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:background">@color/colorAccent</item>
@@ -33,7 +57,7 @@
 
     <style name="imageTable1">
         <item name="android:layout_width">90dp</item>
-        <item name="android:layout_height">165dp</item>
+        <item name="android:layout_height">200dp</item>
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:background">@color/colorAccent</item>
@@ -41,9 +65,16 @@
 
     <style name="linearlayoutTable1">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">180dp</item>
+        <item name="android:layout_height">220dp</item>
         <item name="android:gravity">center</item>
         <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="TextViewDescription">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:gravity">center</item>
     </style>
 
 </resources>

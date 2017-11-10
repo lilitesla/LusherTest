@@ -19,6 +19,9 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
     public static final String KEY_CLICK_COUNT_TAB3 = "CLICK_COUNT_TAB3";
     public static final String KEY_TEST_NUM_TAB3 = "TEST_NUM_TAB3";
     public static final String KEY_IS_SECOND_TRY = "IS_SECOND_TRY";
+    public static final String KEY_IS_WAS_SECOND_TRY = "IS_WAS_SECOND_TRY";
+
+
 
 
     public static void start(Context context) {
@@ -61,14 +64,17 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
 
         isSecondTry = false;
         isWasSecondTry = false;
-        testNum = -1;
+        testNum = 0;
         clickCount = 0;
 
         if (savedInstanceState != null) {
             clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB3, 0);
             testNum = savedInstanceState.getInt(KEY_TEST_NUM_TAB3, -1);
+            isSecondTry = savedInstanceState.getBoolean(KEY_IS_SECOND_TRY, false);
+            isWasSecondTry = savedInstanceState.getBoolean(KEY_IS_WAS_SECOND_TRY, false);
         }
 
+        testNum --;
         addTestNumber();
 
     }
@@ -105,21 +111,6 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         if (clickCount <  6 ) {
             mPresenter.setImagesVisible(clickCount);
 
-       /* } else {
-            if (isSecondTry || isRightTest()) {
-                isSecondTry = false;
-                if (testNum < 4) {
-                    addTestNumber();
-                } else {
-                    mPresenter.showTable2Activity();
-                }
-            } else {
-                testNum --;
-                isSecondTry = true;
-                addTestNumber();
-            }
-        }*/
-
         } else {
             if (!isSecondTry) {
                 if (testNum < 4) {
@@ -141,6 +132,7 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
 
                 } else {
                     mPresenter.showTable2Activity();
+                    finish();
                 }
             }
         }
@@ -282,6 +274,7 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         outState.putInt(KEY_CLICK_COUNT_TAB3, clickCount);
         outState.putInt(KEY_TEST_NUM_TAB3, testNum);
         outState.putBoolean(KEY_IS_SECOND_TRY, isSecondTry);
+        outState.putBoolean(KEY_IS_WAS_SECOND_TRY, isWasSecondTry);
     }
 
 

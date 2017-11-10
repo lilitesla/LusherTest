@@ -75,18 +75,22 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
         if (savedInstanceState != null) {
             clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB2, 0);
             sumNum = savedInstanceState.getInt(KEY_SUM_NUM_TAB2, 28);
+            mQueryNum = savedInstanceState.getInt(EXTRA_KEY_QUERY_NUM, 0);
         }
+
+        setImagesVisible();
+
     }
 
     @Override
     public void setImagesColors() {
         mImage0Tab2.setBackgroundResource(R.color.gray);
-        mImage1Tab2.setBackgroundResource(R.color.darkBlue);
+        mImage1Tab2.setBackgroundResource(R.color.redYellow);
         mImage2Tab2.setBackgroundResource(R.color.teal);
-        mImage3Tab2.setBackgroundResource(R.color.redYellow);
-        mImage4Tab2.setBackgroundResource(R.color.yellowRed);
+        mImage3Tab2.setBackgroundResource(R.color.darkBlue);
+        mImage4Tab2.setBackgroundResource(R.color.brown);
         mImage5Tab2.setBackgroundResource(R.color.purple);
-        mImage6Tab2.setBackgroundResource(R.color.brown);
+        mImage6Tab2.setBackgroundResource(R.color.yellowRed);
         mImage7Tab2.setBackgroundResource(R.color.black);
     }
 
@@ -110,7 +114,7 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
             }
             case R.id.image1_table2: {
                 mImage1Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(1);
+                onClickAction(3);
                 break;
             }
             case R.id.image2_table2: {
@@ -120,12 +124,12 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
             }
             case R.id.image3_table2: {
                 mImage3Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(3);
+                onClickAction(1);
                 break;
             }
             case R.id.image4_table2: {
                 mImage4Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(4);
+                onClickAction(6);
                 break;
             }
             case R.id.image5_table2: {
@@ -135,7 +139,7 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
             }
             case R.id.image6_table2: {
                 mImage6Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(6);
+                onClickAction(4);
                 break;
             }
             case R.id.image7_table2: {
@@ -160,13 +164,59 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
             if (mQueryNum == 0) {
                 App.arrayTab2_1[7] = sumNum;
                 mPresenter.showTable3Screen();
+                finish();
             } else {
                 App.arrayTab2_2[7] = sumNum;
                 mPresenter.showResultScreen();
+                finish();
             }
         }
 
         clickCount ++;
+    }
+
+    private void setImagesVisible() {
+
+        String str = "";
+
+        for (int i = 0; i < 8; i ++) {
+            if (mQueryNum == 0) {
+                if (App.arrayTab2_1[i] > -1) {
+                    str += App.arrayTab2_1[i];
+                }
+            } else {
+                if (App.arrayTab2_2[i] > -1) {
+                    str += App.arrayTab2_2[i];
+                }
+            }
+        }
+
+        if (str.contains("0")) {
+            mImage0Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("3")) {
+            mImage1Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("2")) {
+            mImage2Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("1")) {
+            mImage3Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("6")) {
+            mImage4Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("5")) {
+            mImage5Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("4")) {
+            mImage6Tab2.setVisibility(View.INVISIBLE);
+        }
+        if (str.contains("7")) {
+            mImage7Tab2.setVisibility(View.INVISIBLE);
+        }
+
+
     }
 
     @Override
@@ -174,5 +224,6 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
         super.onSaveInstanceState(outState);
         outState.putInt(KEY_CLICK_COUNT_TAB2, clickCount);
         outState.putInt(KEY_SUM_NUM_TAB2, sumNum);
+        outState.putInt(EXTRA_KEY_QUERY_NUM, mQueryNum);
     }
 }

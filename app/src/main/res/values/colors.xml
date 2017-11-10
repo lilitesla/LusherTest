@@ -15,9 +15,9 @@
     <color name="green">#2E7D32</color>
     <color name="brownGreen">#3E5611</color>
     <color name="yellowGreen">#76FF03</color>
-    <color name="brown">#4E342E</color>
     <color name="lightBrown">#795548</color>
-    <color name="redBrown">#6A2A23</color>
+    <color name="brown">#4E342E</color>
+    <color name="redBrown">#6C2A23</color>
     <color name="redYellow">#FFC107</color>
     <color name="greenYellow">#CCFF11</color>
     <color name="orange">#FB8C00</color>

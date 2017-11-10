@@ -1,6 +1,8 @@
 package lili.tesla.lushertest.presentation.screen.description.view;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
 import android.widget.TextView;
 
@@ -16,9 +18,6 @@ public class DescriptionActivity extends BaseActivity implements DescriptionView
 
     private DescriptionPresenter mPresenter;
 
-    @BindView(R.id.textview_description)
-    TextView mTextViewDescription;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +27,18 @@ public class DescriptionActivity extends BaseActivity implements DescriptionView
         mPresenter = new DescriptionPresenter();
         mPresenter.setView(this);
 
+        showFragment(new FragmentDescription());
+    }
+
+    public void showFragment(Fragment fragment) {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if(fragment.getClass() == Fragment.class) {
+            transaction.add(R.id.container, fragment);
+            transaction.addToBackStack("tag");
+        } else {
+            transaction.replace(R.id.container, fragment);
+        }
+        transaction.commit();
     }
 
     @OnClick(R.id.button_start_test)

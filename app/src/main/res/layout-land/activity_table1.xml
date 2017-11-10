@@ -9,6 +9,8 @@
 
     <TextView
         android:id="@+id/textViewTable1_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         style="@style/TextViewDescription"
         android:text="@string/text_best"/>
 
@@ -26,28 +28,24 @@
 
             <ImageView
                 android:id="@+id/image0_table1"
-                style="@style/imageTable1"/>
+                style="@style/imageTable1land"/>
 
             <ImageView
                 android:id="@+id/image1_table1"
-                style="@style/imageTable1" />
+                style="@style/imageTable1land" />
 
             <ImageView
                 android:id="@+id/image2_table1"
-                style="@style/imageTable1" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            style="@style/linearlayoutTable1">
+                style="@style/imageTable1land" />
 
             <ImageView
                 android:id="@+id/image3_table1"
-                style="@style/imageTable1"/>
+                style="@style/imageTable1land"/>
 
             <ImageView
                 android:id="@+id/image4_table1"
-                style="@style/imageTable1"/>
+                style="@style/imageTable1land"/>
+
 
         </LinearLayout>
 

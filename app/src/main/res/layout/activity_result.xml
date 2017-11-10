@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="16dp"
+    android:layout_margin="20dp"
     tools:context=".presentation.screen.results.view.ResultActivity">
 
     <TextView
@@ -11,18 +11,22 @@
         android:layout_height="wrap_content"
         android:id="@+id/textview_resultcaption"
         android:text="Результаты"
-        android:textSize="20dp"/>
+        android:textSize="24sp"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/teal"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:layout_below="@id/textview_resultcaption">
 
         <TextView
             android:id="@+id/textview_results"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textSize="16dp"/>
+            android:textSize="18sp" />
 
     </ScrollView>
 
