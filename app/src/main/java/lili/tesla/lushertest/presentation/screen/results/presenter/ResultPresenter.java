@@ -21,7 +21,15 @@ public class ResultPresenter extends BasePresenter<ResultView> {
     private boolean isTest2Calc = false;
     private boolean isTest3Calc = false;
 
-    public void showPositiveNegativeResult() {
+    public void showDescriptionScreen() { mView.showDescriptionScreen(); }
+
+    public void showResults() {
+        calcResultTab2();
+        calcResultTab3();
+        showPositiveNegativeResult();
+    }
+
+    private void showPositiveNegativeResult() {
 
         Test1 test1 = new Test1(App.arrayTab1[0] + "" + App.arrayTab1[1] + "" + App.arrayTab1[4]);
 
@@ -45,11 +53,13 @@ public class ResultPresenter extends BasePresenter<ResultView> {
         test2.FillTest();
         test3.FillTest();
 
-        mView.showResult (test1, test2, test3);
+        String str = test1.getResultText() + test3.getColorsResultText() + test2.getResultText() + test3.getCoubResultText() + test2.getExlamation();
+
+        mView.showResult(str);
 
     }
 
-    public void calcResultTab2() {
+    private void calcResultTab2() {
 
         if (! isTest2Calc) {
 
@@ -150,7 +160,7 @@ public class ResultPresenter extends BasePresenter<ResultView> {
 
     }
 
-    public void calcResultTab3() {
+    private void calcResultTab3() {
 
         if (! isTest3Calc) {
 

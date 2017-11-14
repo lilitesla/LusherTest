@@ -10,6 +10,7 @@ import lili.tesla.lushertest.data.Test3;
 
 public interface ResultView {
 
-    void showResult (Test1 test1, Test2 test2, Test3 test3);
+    void showResult (String str);
+    void showDescriptionScreen();
 
 }

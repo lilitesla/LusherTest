@@ -42,7 +42,7 @@ public class FragmentDescription extends Fragment {
             fPosition = savedInstanceState.getInt(KEY_POSITION, 0);
         }
 
-        mPager.setCurrentItem(fPosition); // выводим второй экран
+        mPager.setCurrentItem(fPosition); // выводим экран
 
         return view;
     }

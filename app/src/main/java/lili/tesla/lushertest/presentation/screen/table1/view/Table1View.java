@@ -8,5 +8,7 @@ public interface Table1View {
 
     void setImagesColors();
     void showTable2Screen();
+    void setImageVisible(int num);
+    void setImagesVisible();
 
 }

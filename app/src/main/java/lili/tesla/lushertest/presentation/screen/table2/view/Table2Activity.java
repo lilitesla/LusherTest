@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import lili.tesla.lushertest.R;
 import lili.tesla.lushertest.presentation.application.App;
 import lili.tesla.lushertest.presentation.screen.base.BaseActivity;
@@ -16,12 +17,11 @@ import lili.tesla.lushertest.presentation.screen.results.view.ResultActivity;
 import lili.tesla.lushertest.presentation.screen.table2.presenter.Table2Presenter;
 import lili.tesla.lushertest.presentation.screen.table3.view.Table3Activity;
 
-public class Table2Activity extends BaseActivity implements Table2View, View.OnClickListener {
+public class Table2Activity extends BaseActivity implements Table2View {
 
     public static final String EXTRA_KEY_QUERY_NUM = "KEY_QUERY_NUM";
     public static final String KEY_CLICK_COUNT_TAB2 = "CLICK_COUNT_TAB2";
     public static final String KEY_SUM_NUM_TAB2 = "SUM_NUM_TAB2";
-
 
     public static void start(Context context, int queryNum) {
         Intent intent = new Intent(context, Table2Activity.class);
@@ -33,8 +33,8 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
 
     private Table2Presenter mPresenter;
     private int mQueryNum;
-    private int clickCount;
-    private int sumNum;
+
+    private ImageView[] images;
 
     @BindView(R.id.image0_table2) ImageView mImage0Tab2;
     @BindView(R.id.image1_table2) ImageView mImage1Tab2;
@@ -56,174 +56,120 @@ public class Table2Activity extends BaseActivity implements Table2View, View.OnC
         ButterKnife.bind(this);
         mPresenter = new Table2Presenter();
         mPresenter.setView(this);
-        mPresenter.setImagesColors();
 
-        mQueryNum = getIntent().getIntExtra(EXTRA_KEY_QUERY_NUM, 0);
-
-        mImage0Tab2.setOnClickListener(this);
-        mImage1Tab2.setOnClickListener(this);
-        mImage2Tab2.setOnClickListener(this);
-        mImage3Tab2.setOnClickListener(this);
-        mImage4Tab2.setOnClickListener(this);
-        mImage5Tab2.setOnClickListener(this);
-        mImage6Tab2.setOnClickListener(this);
-        mImage7Tab2.setOnClickListener(this);
-
-        clickCount = 0;
-        sumNum = 28;
+        images = new ImageView[8];
+        images[0] = mImage0Tab2;
+        images[1] = mImage3Tab2;
+        images[2] = mImage2Tab2;
+        images[3] = mImage1Tab2;
+        images[4] = mImage6Tab2;
+        images[5] = mImage5Tab2;
+        images[6] = mImage4Tab2;
+        images[7] = mImage7Tab2;
 
         if (savedInstanceState != null) {
-            clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB2, 0);
-            sumNum = savedInstanceState.getInt(KEY_SUM_NUM_TAB2, 28);
+            mPresenter.clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB2, 0);
+            mPresenter.sumNum = savedInstanceState.getInt(KEY_SUM_NUM_TAB2, 28);
             mQueryNum = savedInstanceState.getInt(EXTRA_KEY_QUERY_NUM, 0);
         }
 
-        setImagesVisible();
+        mPresenter.setImagesColors();
+        mQueryNum = getIntent().getIntExtra(EXTRA_KEY_QUERY_NUM, 0);
 
+        mPresenter.setImagesVisible();
     }
 
     @Override
     public void setImagesColors() {
-        mImage0Tab2.setBackgroundResource(R.color.gray);
-        mImage1Tab2.setBackgroundResource(R.color.redYellow);
-        mImage2Tab2.setBackgroundResource(R.color.teal);
-        mImage3Tab2.setBackgroundResource(R.color.darkBlue);
-        mImage4Tab2.setBackgroundResource(R.color.brown);
-        mImage5Tab2.setBackgroundResource(R.color.purple);
-        mImage6Tab2.setBackgroundResource(R.color.yellowRed);
-        mImage7Tab2.setBackgroundResource(R.color.black);
+        images[0].setBackgroundResource(R.color.gray);
+        images[3].setBackgroundResource(R.color.redYellow);
+        images[2].setBackgroundResource(R.color.teal);
+        images[1].setBackgroundResource(R.color.darkBlue);
+        images[6].setBackgroundResource(R.color.brown);
+        images[5].setBackgroundResource(R.color.purple);
+        images[4].setBackgroundResource(R.color.yellowRed);
+        images[7].setBackgroundResource(R.color.black);
     }
 
     @Override
     public void showTable3Screen() {
         Table3Activity.start(this);
+        finish();
     }
 
     @Override
     public void showResultScreen() {
         ResultActivity.start(this);
+        finish();
+    }
+
+
+    @Override
+    public void setImageVisible(int num) {
+        images[num].setVisibility(View.INVISIBLE);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.image0_table2: {
-                mImage0Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(0);
-                break;
-            }
-            case R.id.image1_table2: {
-                mImage1Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(3);
-                break;
-            }
-            case R.id.image2_table2: {
-                mImage2Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(2);
-                break;
-            }
-            case R.id.image3_table2: {
-                mImage3Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(1);
-                break;
-            }
-            case R.id.image4_table2: {
-                mImage4Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(6);
-                break;
-            }
-            case R.id.image5_table2: {
-                mImage5Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(5);
-                break;
-            }
-            case R.id.image6_table2: {
-                mImage6Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(4);
-                break;
-            }
-            case R.id.image7_table2: {
-                mImage7Tab2.setVisibility(View.INVISIBLE);
-                onClickAction(7);
-                break;
-            }
-        }
-    }
-
-    private void onClickAction( int num) {
-
-         if (mQueryNum == 0) {
-             App.arrayTab2_1[clickCount] = num;
-             sumNum -= num;
-         } else {
-             App.arrayTab2_2[clickCount] = num;
-             sumNum -= num;
-         }
-
-        if (clickCount == 6) {
-            if (mQueryNum == 0) {
-                App.arrayTab2_1[7] = sumNum;
-                mPresenter.showTable3Screen();
-                finish();
-            } else {
-                App.arrayTab2_2[7] = sumNum;
-                mPresenter.showResultScreen();
-                finish();
-            }
-        }
-
-        clickCount ++;
-    }
-
-    private void setImagesVisible() {
-
-        String str = "";
+    public void setImagesVisible() {
 
         for (int i = 0; i < 8; i ++) {
             if (mQueryNum == 0) {
                 if (App.arrayTab2_1[i] > -1) {
-                    str += App.arrayTab2_1[i];
+                    images[App.arrayTab2_1[i]].setVisibility(View.INVISIBLE);
                 }
             } else {
                 if (App.arrayTab2_2[i] > -1) {
-                    str += App.arrayTab2_2[i];
+                    images[App.arrayTab2_2[i]].setVisibility(View.INVISIBLE);
                 }
             }
         }
+    }
 
-        if (str.contains("0")) {
-            mImage0Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("3")) {
-            mImage1Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("2")) {
-            mImage2Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("1")) {
-            mImage3Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("6")) {
-            mImage4Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("5")) {
-            mImage5Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("4")) {
-            mImage6Tab2.setVisibility(View.INVISIBLE);
-        }
-        if (str.contains("7")) {
-            mImage7Tab2.setVisibility(View.INVISIBLE);
-        }
+    @OnClick(R.id.image0_table2)
+    void onImage0Tab2Click() {
+        mPresenter.setImageVisible(0, mQueryNum);
+    }
 
+    @OnClick(R.id.image1_table2)
+    void onImage1Tab2Click() {
+        mPresenter.setImageVisible(3, mQueryNum);
+    }
 
+    @OnClick(R.id.image2_table2)
+    void onImage2Tab2Click() {
+        mPresenter.setImageVisible(2, mQueryNum);
+    }
+
+    @OnClick(R.id.image3_table2)
+    void onImage3Tab2Click() {
+        mPresenter.setImageVisible(1, mQueryNum);
+    }
+
+    @OnClick(R.id.image4_table2)
+    void onImage4Tab2Click() {
+        mPresenter.setImageVisible(6, mQueryNum);
+    }
+
+    @OnClick(R.id.image5_table2)
+    void onImage5Tab2Click() {
+        mPresenter.setImageVisible(5, mQueryNum);
+    }
+
+    @OnClick(R.id.image6_table2)
+    void onImage6Tab2Click() {
+        mPresenter.setImageVisible(4, mQueryNum);
+    }
+
+    @OnClick(R.id.image7_table2)
+    void onImage7Tab2Click() {
+        mPresenter.setImageVisible(7, mQueryNum);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY_CLICK_COUNT_TAB2, clickCount);
-        outState.putInt(KEY_SUM_NUM_TAB2, sumNum);
+        outState.putInt(KEY_CLICK_COUNT_TAB2, mPresenter.clickCount);
+        outState.putInt(KEY_SUM_NUM_TAB2, mPresenter.sumNum);
         outState.putInt(EXTRA_KEY_QUERY_NUM, mQueryNum);
     }
 }

@@ -8,21 +8,19 @@ import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import lili.tesla.lushertest.R;
 import lili.tesla.lushertest.presentation.application.App;
 import lili.tesla.lushertest.presentation.screen.table2.view.Table2Activity;
 import lili.tesla.lushertest.presentation.screen.table3.presenter.Table3Presenter;
 import lili.tesla.lushertest.presentation.screen.base.BaseActivity;
 
-public class Table3Activity extends BaseActivity implements Table3View, View.OnClickListener {
+public class Table3Activity extends BaseActivity implements Table3View{
 
     public static final String KEY_CLICK_COUNT_TAB3 = "CLICK_COUNT_TAB3";
     public static final String KEY_TEST_NUM_TAB3 = "TEST_NUM_TAB3";
     public static final String KEY_IS_SECOND_TRY = "IS_SECOND_TRY";
     public static final String KEY_IS_WAS_SECOND_TRY = "IS_WAS_SECOND_TRY";
-
-
-
 
     public static void start(Context context) {
         Intent intent = new Intent(context, Table3Activity.class);
@@ -32,10 +30,7 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
     }
 
     private Table3Presenter mPresenter;
-    private int testNum;
-    private int clickCount;
-    private boolean isSecondTry;
-    private boolean isWasSecondTry;
+    private ImageView[] images;
 
     @BindView(R.id.image0_table3) ImageView mImage0Tab3;
     @BindView(R.id.image1_table3) ImageView mImage1Tab3;
@@ -51,105 +46,22 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         mPresenter = new Table3Presenter();
         mPresenter.setView(this);
 
-        mImage0Tab3.setOnClickListener(this);
-        mImage1Tab3.setOnClickListener(this);
-        mImage2Tab3.setOnClickListener(this);
-        mImage3Tab3.setOnClickListener(this);
-
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 4; j++) {
-                App.arrayTab3[i][j] = 0;
-            }
-        }
-
-        isSecondTry = false;
-        isWasSecondTry = false;
-        testNum = 0;
-        clickCount = 0;
+        images = new ImageView[4];
+        images[0] = mImage0Tab3;
+        images[1] = mImage1Tab3;
+        images[2] = mImage2Tab3;
+        images[3] = mImage3Tab3;
 
         if (savedInstanceState != null) {
-            clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB3, 0);
-            testNum = savedInstanceState.getInt(KEY_TEST_NUM_TAB3, -1);
-            isSecondTry = savedInstanceState.getBoolean(KEY_IS_SECOND_TRY, false);
-            isWasSecondTry = savedInstanceState.getBoolean(KEY_IS_WAS_SECOND_TRY, false);
+            mPresenter.clickCount = savedInstanceState.getInt(KEY_CLICK_COUNT_TAB3, 0);
+            mPresenter.testNum = savedInstanceState.getInt(KEY_TEST_NUM_TAB3, -1);
+            mPresenter.isSecondTry = savedInstanceState.getBoolean(KEY_IS_SECOND_TRY, false);
+            mPresenter.isWasSecondTry = savedInstanceState.getBoolean(KEY_IS_WAS_SECOND_TRY, false);
         }
+        mPresenter.testNum --;
 
-        testNum --;
-        addTestNumber();
-
+        mPresenter.startNewTest();
     }
-
-    @Override
-    public void onClick(View v) {
-
-        switch (v.getId()) {
-            case R.id.image0_table3: {
-                App.arrayTab3[testNum][0] ++;
-                break;
-            }
-            case R.id.image1_table3: {
-                App.arrayTab3[testNum][1] ++;
-                break;
-            }
-            case R.id.image2_table3: {
-                App.arrayTab3[testNum][2] ++;
-                break;
-            }
-            case R.id.image3_table3: {
-                App.arrayTab3[testNum][3] ++;
-                break;
-            }            
-        }
-
-        onClickAction();
-    }
-
-    private void onClickAction(){
-
-        clickCount ++;
-
-        if (clickCount <  6 ) {
-            mPresenter.setImagesVisible(clickCount);
-
-        } else {
-            if (!isSecondTry) {
-                if (testNum < 4) {
-                    addTestNumber();
-                } else {
-                    isSecondTry = true;
-                    testNum = 0;
-                }
-            }
-            if (isSecondTry) {
-                while ((testNum < 5)&&(isRightTest()||isWasSecondTry)) {
-                    isWasSecondTry = false;
-                    testNum ++;
-                }
-                if (testNum < 5) {
-                    testNum --;
-                    isWasSecondTry = true;
-                    addTestNumber();
-
-                } else {
-                    mPresenter.showTable2Activity();
-                    finish();
-                }
-            }
-        }
-
-    }
-
-    private void addTestNumber() {        
-        testNum ++;
-        if (clickCount == 6) {
-            clickCount = 0;
-        }
-        for (int i = 0; i < 4; i ++) {
-            App.arrayTab3[testNum][i] = 0;
-        }
-        mPresenter.setImagesColors(testNum);
-        mPresenter.setImagesVisible(clickCount);
-    } 
 
     @Override
     public void setImagesColors(int testColorNum) {
@@ -195,6 +107,7 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
     @Override
     public void showTable2Screen() {
         Table2Activity.start(this, 1);
+        finish();
     }
 
     @Override
@@ -238,45 +151,33 @@ public class Table3Activity extends BaseActivity implements Table3View, View.OnC
         }
     }
 
-    private boolean isRightTest(){
+    @OnClick(R.id.image0_table3)
+    void onImage0Table3Click() {
+        mPresenter.onImageClick(0);
+    }
 
-        int countsIsZero = 0;
-        int countsIsOne = 0;
-        int countsIsTwo = 0;
-        int countsIsThree = 0;
+    @OnClick(R.id.image1_table3)
+    void onImage1Table3Click() {
+        mPresenter.onImageClick(1);
+    }
 
-        for (int i = 0; i < 4; i ++) {
-            switch (App.arrayTab3[testNum][i]) {
-                case 0:
-                    countsIsZero ++;
-                    break;
-                case 1:
-                    countsIsOne ++;
-                    break;
-                case 2:
-                    countsIsTwo ++;
-                    break;
-                case 3:
-                    countsIsThree ++;
-            }
-        }
+    @OnClick(R.id.image2_table3)
+    void onImage2Table3Click() {
+        mPresenter.onImageClick(2);
+    }
 
-        if ((countsIsZero > 1)||(countsIsOne > 1) ||(countsIsTwo > 1) ||(countsIsThree > 1)) {
-            return false;
-        } else {
-            return true;
-        }
+    @OnClick(R.id.image3_table3)
+    void onImage3Table3Click() {
+        mPresenter.onImageClick(3);
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt(KEY_CLICK_COUNT_TAB3, clickCount);
-        outState.putInt(KEY_TEST_NUM_TAB3, testNum);
-        outState.putBoolean(KEY_IS_SECOND_TRY, isSecondTry);
-        outState.putBoolean(KEY_IS_WAS_SECOND_TRY, isWasSecondTry);
+        outState.putInt(KEY_CLICK_COUNT_TAB3, mPresenter.clickCount);
+        outState.putInt(KEY_TEST_NUM_TAB3, mPresenter.testNum);
+        outState.putBoolean(KEY_IS_SECOND_TRY, mPresenter.isSecondTry);
+        outState.putBoolean(KEY_IS_WAS_SECOND_TRY, mPresenter.isWasSecondTry);
     }
-
-
 
 }

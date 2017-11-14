@@ -37,6 +37,12 @@ public class App extends Application {
         arrayTab2_2 = new int[8];
         arrayTab3 = new int[6][4];
 
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 4; j++) {
+                App.arrayTab3[i][j] = 0;
+            }
+        }
+
         fragmentPosition = 0;
 
         dataBaseAccess = new DataBaseAccess(this);
